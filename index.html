@@ -1,0 +1,313 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CyberPath — Roadmap cybersécurité</title>
+  <meta name="description" content="Roadmap interactive de cybersécurité polyvalente sur 12 mois.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0c1117;--bg-2:#121a21;--panel:#141e28;--panel-2:#1b2a33;--line:#273843;--line-2:#365062;--txt:#edf4f7;--muted:#99a9b5;--cyan:#86c7bf;--cyan-2:#9ddbc7;--purple:#c7b38a;--yellow:#d9c18d;--danger:#d67d85;--shadow:0 18px 50px rgba(5,9,12,.6)
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% -10%,rgba(134,199,191,.12),transparent 20rem),radial-gradient(circle at 80% 0%,rgba(199,179,138,.10),transparent 22rem),linear-gradient(180deg,#0a0e12 0%,var(--bg) 22%,#0f171d 100%);color:var(--txt);font:15px/1.6 Manrope,Arial,sans-serif;position:relative}body::before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.02),rgba(255,255,255,.02) 1px,transparent 1px,transparent 3px);opacity:.45;pointer-events:none}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}button{cursor:pointer}.shell{max-width:1360px;margin:28px auto;padding:20px 20px 28px;border:1px solid rgba(157,182,199,.18);border-radius:30px;background:rgba(9,14,19,.78);backdrop-filter:blur(10px);box-shadow:var(--shadow);position:relative}.shell::before{content:"";position:absolute;inset:16px;border:1px solid rgba(134,199,191,.08);border-radius:22px;pointer-events:none}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 32px;padding:4px 6px 18px;border-bottom:1px solid var(--line);position:relative}.terminal-bar{display:flex;align-items:center;gap:8px}.terminal-bar span{width:10px;height:10px;border-radius:50%;display:block;box-shadow:0 0 10px rgba(255,255,255,.12)}.terminal-bar .red{background:#d67d85;color:#d67d85}.terminal-bar .amber{background:#d9c18d;color:#d9c18d}.terminal-bar .green{background:#86c7bf;color:#86c7bf}.brand{font-weight:800;font-size:21px;letter-spacing:-1px;margin-left:10px}.brand i{font:500 12px 'DM Mono';color:var(--cyan);font-style:normal;margin-right:8px}.reset{color:var(--muted);background:rgba(18,24,29,.9);border:1px solid var(--line);border-radius:10px;padding:9px 13px;transition:all .2s ease}.reset:hover{border-color:var(--line-2);color:var(--txt);box-shadow:0 0 0 1px rgba(134,199,191,.12)}.hero{display:grid;grid-template-columns:1.5fr .85fr;gap:30px;align-items:end;margin-bottom:42px}.eyebrow{font:500 12px 'DM Mono';color:var(--cyan);text-transform:uppercase;letter-spacing:.15em}.hero h1{font-size:clamp(2.35rem,6vw,4.7rem);line-height:1.02;letter-spacing:-.07em;margin:12px 0 16px;max-width:850px;text-shadow:0 0 16px rgba(134,199,191,.10)}.hero p{color:var(--muted);max-width:650px;font-size:17px;margin:0}.progress-card,.card{background:linear-gradient(145deg,rgba(17,24,30,.96),rgba(12,17,22,.98));border:1px solid rgba(142,170,184,.18);border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.02)}.progress-card{padding:25px;position:relative;overflow:hidden}.progress-card::after{content:"";position:absolute;inset:-30% auto auto -20%;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(134,199,191,.16),transparent 70%);pointer-events:none}.label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.big{font-size:50px;letter-spacing:-.06em;font-weight:800;margin:3px 0}.bar{height:10px;background:#202d35;border-radius:99px;overflow:hidden;border:1px solid rgba(255,255,255,.04)}.bar>span{height:100%;display:block;border-radius:inherit;background:linear-gradient(90deg,var(--cyan),var(--purple));box-shadow:0 0 10px rgba(134,199,191,.25);transition:width .35s}.progress-card small{color:var(--muted);display:block;margin-top:10px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.stats div{border-left:1px solid var(--line);padding-left:11px}.stats strong{display:block;font-size:19px}.stats span{font-size:11px;color:var(--muted)}.layout{display:grid;grid-template-columns:242px 1fr;gap:27px}.side{position:sticky;top:20px;height:max-content}.side h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 12px}.month-nav{display:grid;gap:6px}.month-nav button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:0;color:var(--muted);padding:10px 11px;border-radius:10px;text-align:left;transition:all .2s ease}.month-nav button:hover,.month-nav button.active{color:var(--txt);background:linear-gradient(90deg,rgba(134,199,191,.06),rgba(217,193,141,.05));border:1px solid rgba(134,199,191,.12)}.dot{width:8px;height:8px;border:1px solid var(--muted);border-radius:50%;flex:0 0 auto}.done .dot{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 12px rgba(134,199,191,.45)}.main{min-width:0}.month{display:none;animation:in .25s ease}.month.active{display:block}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.month-head{display:flex;justify-content:space-between;align-items:start;gap:14px;margin-bottom:19px}.month-head h2{font-size:30px;letter-spacing:-.045em;margin:2px 0}.month-head p{color:var(--muted);margin:0}.tag{font:500 11px 'DM Mono';border:1px solid var(--line);padding:6px 9px;border-radius:99px;color:var(--cyan);white-space:nowrap;background:rgba(134,199,191,.05)}.lessons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.lesson{padding:19px;transition:transform .2s ease,border-color .2s ease}.lesson:hover{transform:translateY(-2px);border-color:rgba(134,199,191,.22)}.lesson h3{margin:0 0 8px;font-size:16px}.lesson p{color:var(--muted);font-size:13px;margin:0 0 13px}.check{display:flex;align-items:center;gap:10px;color:#dfeaf3;font-size:13px;cursor:pointer}.check input{accent-color:var(--cyan);width:17px;height:17px}.resources{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.resource{font-size:12px;padding:5px 9px;background:rgba(19,30,36,.9);border:1px solid rgba(134,199,191,.10);border-radius:8px}.project{margin-top:21px;padding:21px}.project h3{margin:0 0 5px;font-size:17px}.project p{margin:0 0 13px;color:var(--muted);font-size:13px}.project-checks{display:flex;flex-wrap:wrap;gap:14px}.planner{margin-top:48px;position:relative}.planner h2{font-size:28px;letter-spacing:-.04em;margin-bottom:4px}.planner>p{color:var(--muted);margin-top:0}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:18px}.day{min-height:164px;padding:13px}.day h3{font-size:12px;color:var(--cyan);margin:0 0 10px;text-transform:uppercase}.day textarea{resize:vertical;width:100%;min-height:95px;color:var(--txt);background:transparent;border:0;border-top:1px solid var(--line);padding:9px 0;outline:0;font:12px/1.5 Manrope}.day textarea::placeholder{color:rgba(154,174,198,.6)}.footer{margin:42px 0 12px;color:var(--muted);font-size:12px;text-align:center}.toast{position:fixed;bottom:18px;right:18px;background:#eaf6f4;color:#1a2727;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:700;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;box-shadow:0 18px 32px rgba(0,0,0,.25)}.toast.show{opacity:1;transform:none}@media(max-width:850px){.hero,.layout{grid-template-columns:1fr}.side{position:relative;top:auto}.month-nav{grid-template-columns:repeat(3,1fr)}.month-nav button{font-size:12px}.lessons{grid-template-columns:1fr}.week{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.shell{padding:16px}.top{margin-bottom:28px;flex-wrap:wrap}.hero{margin-bottom:28px}.month-nav{grid-template-columns:repeat(2,1fr)}.week{grid-template-columns:1fr}.stats{gap:5px}.big{font-size:44px}.brand{margin-left:0}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="terminal-bar" aria-hidden="true"><span class="red"></span><span class="amber"></span><span class="green"></span></div>
+      <div class="brand"><i>01//</i>CYBERPATH</div>
+      <button class="reset" id="reset">Réinitialiser ma progression</button>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Roadmap débutant · 12 mois</span>
+        <h1>De curieux à praticien polyvalent.</h1>
+        <p>Un parcours progressif pour comprendre, défendre et tester des systèmes de manière éthique. Coche chaque étape : la progression est enregistrée et synchronisée.</p>
+      </div>
+      <aside class="progress-card">
+        <span class="label">Ta progression globale</span>
+        <div class="big" id="percent">0%</div>
+        <div class="bar" aria-label="Progression"><span id="progressBar"></span></div>
+        <small id="progressText">0 leçon terminée sur 48</small>
+        <div class="stats">
+          <div><strong id="monthsDone">0</strong><span>mois terminés</span></div>
+          <div><strong>12</strong><span>mois au total</span></div>
+          <div><strong>6h</strong><span>par semaine</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="layout">
+      <aside class="side">
+        <h2>Explorer le parcours</h2>
+        <nav class="month-nav" id="monthNav"></nav>
+      </aside>
+      <section class="main" id="months"></section>
+    </div>
+
+    <section class="planner">
+      <h2>Ton planning hebdomadaire</h2>
+      <p>Note tes créneaux ou ton objectif du jour. Ton organisation est aussi conservée.</p>
+      <div class="week" id="week"></div>
+    </section>
+
+    <p class="footer">Apprends uniquement dans des environnements autorisés : tes propres machines, des labs et des plateformes de formation.</p>
+  </main>
+
+  <div class="toast" id="toast" role="status">Progression enregistrée</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./config.js"></script>
+  <script>
+    const roadmap = [
+      ['Mois 01','Fondations numériques','Comprendre ton ordinateur, le Web et les règles du jeu.',[['Systèmes d’exploitation','Windows, Linux, fichiers, processus et terminal.','Linux Journey|https://linuxjourney.com/'],['Réseaux essentiels','IP, DNS, ports, TCP/UDP et le modèle OSI.','Cisco Skills for All|https://skillsforall.com/'],['Culture sécurité','CIA, menaces, vulnérabilités, risques et éthique.','ANSSI|https://cyber.gouv.fr/'],['HTML & CSS utiles','Lire une page web et comprendre les formulaires.','MDN Web Docs|https://developer.mozilla.org/fr/']],'Cartographier ton poste',['Installer une VM Linux','Documenter 10 commandes','Identifier les connexions réseau']],
+      ['Mois 02','Linux & ligne de commande','Gagner de l’aisance dans l’environnement préféré des analystes.',[['Navigation & fichiers','Permissions, utilisateurs, pipes et redirections.','OverTheWire Bandit|https://overthewire.org/wargames/bandit/'],['Bash pratique','Variables, boucles et petits scripts d’automatisation.','GNU Bash manual|https://www.gnu.org/software/bash/manual/'],['Services Linux','SSH, journalctl, systemd et gestion des paquets.','Linux Journey|https://linuxjourney.com/'],['Hygiène système','Mises à jour, mots de passe, sauvegardes et chiffrement.','Cybermalveillance|https://www.cybermalveillance.gouv.fr/']],'Boîte à outils Linux',['Créer une VM durcie','Écrire 3 scripts Bash','Créer une fiche de commandes']],
+      ['Mois 03','Python pour la sécurité','Apprendre à automatiser, analyser et manipuler des données.',[['Bases de Python','Variables, fonctions, listes, dictionnaires et fichiers.','Python Docs|https://docs.python.org/fr/3/tutorial/'],['HTTP avec Python','Requêtes, réponses, JSON et gestion d’erreurs.','Real Python|https://realpython.com/'],['Analyse de journaux','Lire un CSV et extraire des indicateurs simples.','TryHackMe|https://tryhackme.com/'],['Bon code','Environnements virtuels, modules et Git de base.','GitHub Skills|https://skills.github.com/']],'Analyseur de logs',['Lire un fichier de logs','Repérer des IP répétées','Générer un rapport texte']],
+      ['Mois 04','Réseaux & Wireshark','Observer le trafic pour comprendre ce qui circule réellement.',[['Architecture réseau','Routeurs, VLAN, pare-feu, NAT et DHCP.','Cisco Skills for All|https://skillsforall.com/'],['Wireshark','Captures, filtres, protocoles et suivi de flux.','Wireshark Wiki|https://wiki.wireshark.org/'],['DNS & HTTP','Requêtes DNS, TLS, cookies et en-têtes HTTP.','Cloudflare Learning|https://www.cloudflare.com/learning/'],['Diagnostic réseau','ping, tracert, nslookup et netstat.','Microsoft Learn|https://learn.microsoft.com/fr-fr/']],'Mini enquête réseau',['Capturer ton propre trafic','Filtrer DNS et HTTP','Rédiger 3 observations']],
+      ['Mois 05','Sécurité web','Comprendre comment les applications web se protègent et échouent.',[['Web moderne','Sessions, APIs, authentification et rôles.','PortSwigger Academy|https://portswigger.net/web-security'],['OWASP Top 10','Risques web les plus courants et impacts.','OWASP|https://owasp.org/www-project-top-ten/'],['Laboratoire contrôlé','Découvrir Burp Suite dans un lab légal.','PortSwigger Academy|https://portswigger.net/web-security'],['Correction','Validation des entrées, HTTPS, CSP et moindre privilège.','OWASP Cheat Sheets|https://cheatsheetseries.owasp.org/']],'Audit web de laboratoire',['Finir 3 modules guidés','Noter impact et correction','Créer une checklist web']],
+      ['Mois 06','Systèmes & durcissement','Réduire la surface d’attaque des postes et serveurs.',[['Windows sécurité','Comptes, UAC, Defender, événements et mises à jour.','Microsoft Learn|https://learn.microsoft.com/fr-fr/training/'],['Linux durci','SSH, pare-feu, permissions et services inutiles.','CIS Benchmarks|https://www.cisecurity.org/cis-benchmarks'],['Identité & accès','MFA, gestion des secrets et principe du moindre privilège.','NIST|https://www.nist.gov/cyberframework'],['Sauvegardes','Stratégie 3-2-1 et test de restauration.','CISA|https://www.cisa.gov/']],'Guide de durcissement',['Appliquer 10 mesures à une VM','Tester la restauration','Documenter les écarts']],
+      ['Mois 07','Détection & SOC','Découvrir comment repérer et qualifier les incidents.',[['Logs de sécurité','Événements Windows, syslog et lignes importantes.','Splunk Training|https://www.splunk.com/en_us/training.html'],['SIEM','Collecte, corrélation, alertes et faux positifs.','Elastic Security|https://www.elastic.co/security'],['MITRE ATT&CK','Tactiques et techniques adverses.','MITRE ATT&CK|https://attack.mitre.org/'],['Triage','Prioriser, enrichir et escalader une alerte.','TryHackMe|https://tryhackme.com/']],'Playbook d’alerte',['Choisir 3 événements suspects','Écrire le triage','Mapper une technique MITRE']],
+      ['Mois 08','Réponse à incident','Agir avec méthode lorsque quelque chose se passe mal.',[['Cycle incident','Préparation, identification, confinement, éradication.','NIST 800-61|https://www.nist.gov/privacy-framework/nist-sp-800-61'],['Investigation','Préserver les preuves et tenir une chronologie.','SANS DFIR|https://www.sans.org/'],['Malware : notions','Indicateurs, sandbox et précautions d’analyse.','Malwarebytes Labs|https://www.malwarebytes.com/blog'],['Communication','Rapport clair, impact, décisions et leçons apprises.','CISA|https://www.cisa.gov/']],'Simulation d’incident',['Écrire un scénario phishing','Créer une chronologie','Faire un rapport d’une page']],
+      ['Mois 09','Cloud & conteneurs','Sécuriser les bases des environnements modernes.',[['Cloud partagé','Responsabilités client/fournisseur et IAM.','AWS Skill Builder|https://skillbuilder.aws/'],['IAM','Utilisateurs, rôles, politiques et MFA.','Microsoft Learn|https://learn.microsoft.com/fr-fr/azure/'],['Docker','Images, conteneurs, volumes et secrets.','Docker Docs|https://docs.docker.com/get-started/'],['Cloud sécurisé','Journalisation, exposition publique et configuration.','OWASP Cloud|https://owasp.org/']],'Lab cloud sécurisé',['Créer un compte lab','Activer MFA','Documenter un rôle minimal']],
+      ['Mois 10','Pentest éthique','Savoir évaluer une surface d’attaque avec autorisation.',[['Méthodologie','Périmètre, règles d’engagement et rapport.','PTES|http://www.pentest-standard.org/'],['Reconnaissance','OSINT responsable et inventaire autorisé.','TryHackMe|https://tryhackme.com/'],['Énumération','Services, versions et hypothèses de risque.','Hack The Box Academy|https://academy.hackthebox.com/'],['Rapport pentest','Preuve, impact, priorité et recommandation.','OWASP Testing Guide|https://owasp.org/www-project-web-security-testing-guide/']],'Rapport de lab',['Finir un parcours guidé','Écrire 2 constats','Proposer les corrections']],
+      ['Mois 11','Gouvernance & risque','Relier la technique aux besoins de l’organisation.',[['Gestion des risques','Actifs, vraisemblance, impact et traitement.','ISO 27001|https://www.iso.org/isoiec-27001-information-security.html'],['Politiques sécurité','Accès, usage acceptable, incidents et sauvegardes.','ANSSI|https://cyber.gouv.fr/'],['Conformité','Notions de RGPD et protection des données.','CNIL|https://www.cnil.fr/'],['Sensibilisation','Phishing, mots de passe et réflexes d’équipe.','Cybermalveillance|https://www.cybermalveillance.gouv.fr/']],'Mini analyse de risque',['Lister 5 actifs','Évaluer 3 risques','Écrire 3 mesures prioritaires']],
+      ['Mois 12','Portfolio & consolidation','Assembler tes compétences et préparer la suite.',[['Révisions guidées','Revoir tes notes et les lacunes restantes.','TryHackMe|https://tryhackme.com/'],['Portfolio GitHub','Présenter projets, rapports et apprentissages.','GitHub Docs|https://docs.github.com/'],['Veille cybersécurité','Suivre les alertes et apprendre en continu.','CERT-FR|https://www.cert.ssi.gouv.fr/'],['Orientation','Choisir une première spécialité : SOC, pentest, cloud ou GRC.','OpenClassrooms|https://openclassrooms.com/fr/']],'Portfolio de praticien',['Publier 3 projets anonymisés','Écrire ton profil','Planifier les 90 prochains jours']]
+    ];
+
+    const localKey = 'cyberpath-v1';
+    const state = { checks: {}, notes: {} };
+    const config = window.SUPABASE_CONFIG || {};
+    const supabase = config.url && config.anonKey && window.supabase ? window.supabase.createClient(config.url, config.anonKey) : null;
+    const deviceId = (() => {
+      const existing = localStorage.getItem('cyberpath-device-id');
+      if (existing) return existing;
+      const id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'device-' + Date.now() + '-' + Math.random().toString(16).slice(2);
+      localStorage.setItem('cyberpath-device-id', id);
+      return id;
+    })();
+
+    function readLocalState() {
+      try {
+        const raw = localStorage.getItem(localKey);
+        if (!raw) return { checks: {}, notes: {} };
+        const parsed = JSON.parse(raw);
+        return {
+          checks: parsed.checks || {},
+          notes: parsed.notes || {}
+        };
+      } catch (error) {
+        console.warn('Impossible de lire la progression locale :', error);
+        return { checks: {}, notes: {} };
+      }
+    }
+
+    function saveLocalState() {
+      localStorage.setItem(localKey, JSON.stringify({ checks: state.checks, notes: state.notes }));
+    }
+
+    async function loadRemoteState() {
+      if (!supabase) return false;
+      try {
+        const { data, error } = await supabase
+          .from('cyberpath_state')
+          .select('*')
+          .eq('device_id', deviceId)
+          .maybeSingle();
+
+        if (error && error.code !== 'PGRST116') {
+          console.warn('Supabase lecture impossible :', error.message);
+          return false;
+        }
+
+        if (data) {
+          state.checks = data.checks || {};
+          state.notes = data.notes || {};
+          saveLocalState();
+          return true;
+        }
+      } catch (error) {
+        console.warn('Supabase lecture impossible :', error);
+      }
+      return false;
+    }
+
+    async function saveRemoteState() {
+      if (!supabase) return;
+      try {
+        const payload = {
+          device_id: deviceId,
+          checks: state.checks,
+          notes: state.notes,
+          updated_at: new Date().toISOString()
+        };
+
+        const { error } = await supabase.from('cyberpath_state').upsert(payload, { onConflict: 'device_id' });
+        if (error) {
+          console.warn('Supabase sauvegarde impossible :', error.message);
+        }
+      } catch (error) {
+        console.warn('Supabase sauvegarde impossible :', error);
+      }
+    }
+
+    async function restoreState() {
+      const localState = readLocalState();
+      state.checks = localState.checks || {};
+      state.notes = localState.notes || {};
+
+      if (supabase) {
+        await loadRemoteState();
+      }
+    }
+
+    function buildRoadmap() {
+      const nav = document.querySelector('#monthNav');
+      const months = document.querySelector('#months');
+
+      roadmap.forEach((m, i) => {
+        const button = document.createElement('button');
+        button.dataset.i = i;
+        button.innerHTML = `<span class="dot"></span><span>${m[0].replace('Mois ', 'M. ')}<br><b>${m[1]}</b></span>`;
+        button.onclick = () => show(i);
+        nav.appendChild(button);
+
+        const article = document.createElement('article');
+        article.className = 'month';
+        article.id = 'm' + i;
+        article.innerHTML = `
+          <div class="month-head">
+            <div>
+              <span class="eyebrow">${m[0]}</span>
+              <h2>${m[1]}</h2>
+              <p>${m[2]}</p>
+            </div>
+            <span class="tag">4 leçons</span>
+          </div>
+          <div class="lessons">
+            ${m[3].map((lesson, j) => `
+              <section class="lesson card">
+                <h3>${lesson[0]}</h3>
+                <p>${lesson[1]}</p>
+                <label class="check">
+                  <input type="checkbox" data-key="l-${i}-${j}">
+                  J’ai terminé cette leçon
+                </label>
+                <div class="resources">
+                  <a class="resource" target="_blank" rel="noopener" href="${lesson[2].split('|')[1]}">↗ ${lesson[2].split('|')[0]}</a>
+                </div>
+              </section>
+            `).join('')}
+          </div>
+          <section class="project card">
+            <span class="eyebrow">Projet du mois</span>
+            <h3>${m[4]}</h3>
+            <p>Transforme l’apprentissage en preuve concrète de compétence.</p>
+            <div class="project-checks">
+              ${m[5].map((item, j) => `
+                <label class="check"><input type="checkbox" data-key="p-${i}-${j}"> ${item}</label>
+              `).join('')}
+            </div>
+          </section>
+        `;
+        months.appendChild(article);
+      });
+    }
+
+    function bindChecks() {
+      document.querySelectorAll('[data-key]').forEach((input) => {
+        input.checked = !!state.checks[input.dataset.key];
+        input.addEventListener('change', async () => {
+          state.checks[input.dataset.key] = input.checked;
+          saveLocalState();
+          if (supabase) await saveRemoteState();
+          update();
+          toast();
+        });
+      });
+    }
+
+    function bindNotes() {
+      const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+      const week = document.querySelector('#week');
+      week.innerHTML = days.map((day) => `
+        <section class="day card">
+          <h3>${day}</h3>
+          <textarea aria-label="Programme ${day}" data-day="${day}" placeholder="Ex. 45 min · Réseaux">${state.notes[day] || ''}</textarea>
+        </section>
+      `).join('');
+
+      document.querySelectorAll('[data-day]').forEach((input) => {
+        input.addEventListener('input', () => {
+          state.notes[input.dataset.day] = input.value;
+          saveLocalState();
+          if (supabase) saveRemoteState();
+        });
+      });
+    }
+
+    function show(index) {
+      document.querySelectorAll('.month').forEach((element, n) => element.classList.toggle('active', n === index));
+      document.querySelectorAll('.month-nav button').forEach((button, n) => button.classList.toggle('active', n === index));
+      const target = document.querySelector('#m' + index);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function update() {
+      const lessonInputs = [...document.querySelectorAll('[data-key^="l-"]')];
+      const done = lessonInputs.filter((input) => input.checked).length;
+      const total = lessonInputs.length;
+
+      document.querySelector('#percent').textContent = Math.round((done / total) * 100) + '%';
+      document.querySelector('#progressText').textContent = `${done} leçon${done > 1 ? 's' : ''} terminée${done > 1 ? 's' : ''} sur ${total}`;
+      document.querySelector('#progressBar').style.width = (done / total) * 100 + '%';
+
+      const monthsDone = roadmap.filter((month, i) => month[3].every((_, j) => state.checks[`l-${i}-${j}`])).length;
+      document.querySelector('#monthsDone').textContent = monthsDone;
+
+      document.querySelectorAll('.month-nav button').forEach((button, i) => {
+        button.classList.toggle('done', roadmap[i][3].every((_, j) => state.checks[`l-${i}-${j}`]));
+      });
+    }
+
+    let timer;
+    function toast() {
+      const node = document.querySelector('#toast');
+      node.classList.add('show');
+      clearTimeout(timer);
+      timer = setTimeout(() => node.classList.remove('show'), 1800);
+    }
+
+    document.querySelector('#reset').addEventListener('click', async () => {
+      const confirmed = confirm('Effacer définitivement ta progression et ton planning ?');
+      if (!confirmed) return;
+
+      localStorage.removeItem(localKey);
+      localStorage.removeItem('cyberpath-device-id');
+
+      if (supabase) {
+        try {
+          await supabase.from('cyberpath_state').delete().eq('device_id', deviceId);
+        } catch (error) {
+          console.warn('Impossible de réinitialiser Supabase :', error);
+        }
+      }
+
+      location.reload();
+    });
+
+    async function init() {
+      buildRoadmap();
+      await restoreState();
+      bindChecks();
+      bindNotes();
+      update();
+      show(0);
+    }
+
+    init();
+  </script>
+</body>
+</html>
