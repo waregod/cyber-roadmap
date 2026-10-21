@@ -1,27 +1,25 @@
 # CyberPath
 
-Roadmap cybersécurité interactive hébergée sur GitHub Pages et synchronisée via Supabase.
+Roadmap cybersécurité interactive en page unique, déployée sur GitHub Pages et synchronisée avec Supabase.
 
-## 1) Configurer Supabase
+## 1) Configuration Supabase
 
-1. Crée un projet Supabase.
-2. Ouvre l'éditeur SQL et exécute le contenu de `supabase.sql`.
-3. Copie l'URL du projet et la clé anonyme.
-4. Ouvre `config.js` et remplace les valeurs par défaut.
+1. Ouvre le projet Supabase.
+2. Va dans SQL Editor.
+3. Copie-colle le contenu de `supabase.sql`.
+4. Va dans Project settings > API.
+5. Copie l’URL du projet et la clé `anon`.
+6. Ouvre `config.js` et remplace les valeurs si nécessaire.
 
-## 2) Publier sur GitHub Pages
+## 2) Déploiement GitHub Pages
 
-1. Crée un dépôt GitHub.
-2. Pousse ce dossier vers la branche `main`.
-3. Dans GitHub, va dans Settings > Pages.
+1. Pousse ce dossier sur GitHub.
+2. Ouvre le dépôt dans GitHub.
+3. Settings > Pages.
 4. Sélectionne la branche `main` et le dossier `/root`.
 
-## 3) Vérifier le fonctionnement
+## 3) Fonctionnement
 
-- Ouvre la page publiée.
-- Coche une leçon ou un objectif.
-- Recharge la page et vérifie que la progression est conservée.
-
-## 4) Remise à zéro
-
-Le bouton de réinitialisation supprime la progression locale et Supabase pour l'appareil courant.
+- Les données se sauvegardent dans le navigateur.
+- Si Supabase est bien configuré, elles se synchronisent aussi en ligne.
+- La progression reste visible après refresh et sur d’autres appareils.

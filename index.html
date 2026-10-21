@@ -78,7 +78,6 @@
     ];
 
     const localKey = 'cyberpath-v1';
-    const state = { checks: {}, notes: {} };
     const config = window.SUPABASE_CONFIG || {};
     const supabase = config.url && config.anonKey && window.supabase ? window.supabase.createClient(config.url, config.anonKey) : null;
     const deviceId = (() => {
@@ -89,19 +88,13 @@
       return id;
     })();
 
-    function readLocalState() {
-      try {
-        const raw = localStorage.getItem(localKey);
-        if (!raw) return { checks: {}, notes: {} };
-        const parsed = JSON.parse(raw);
-        return {
-          checks: parsed.checks || {},
-          notes: parsed.notes || {}
-        };
-      } catch (error) {
-        console.warn('Impossible de lire la progression locale :', error);
-        return { checks: {}, notes: {} };
-      }
+    let state;
+    try {
+      state = JSON.parse(localStorage.getItem(localKey) || '{"checks":{},"notes":{}}');
+      state.checks ||= {};
+      state.notes ||= {};
+    } catch {
+      state = { checks: {}, notes: {} };
     }
 
     function saveLocalState() {
@@ -109,7 +102,7 @@
     }
 
     async function loadRemoteState() {
-      if (!supabase) return false;
+      if (!supabase) return;
       try {
         const { data, error } = await supabase
           .from('cyberpath_state')
@@ -118,49 +111,42 @@
           .maybeSingle();
 
         if (error && error.code !== 'PGRST116') {
-          console.warn('Supabase lecture impossible :', error.message);
-          return false;
+          console.warn('Supabase read error:', error.message);
+          return;
         }
 
         if (data) {
           state.checks = data.checks || {};
           state.notes = data.notes || {};
           saveLocalState();
-          return true;
         }
       } catch (error) {
-        console.warn('Supabase lecture impossible :', error);
+        console.warn('Supabase read failed:', error);
       }
-      return false;
     }
 
     async function saveRemoteState() {
       if (!supabase) return;
       try {
-        const payload = {
-          device_id: deviceId,
-          checks: state.checks,
-          notes: state.notes,
-          updated_at: new Date().toISOString()
-        };
+        const { error } = await supabase
+          .from('cyberpath_state')
+          .upsert({
+            device_id: deviceId,
+            checks: state.checks,
+            notes: state.notes,
+            updated_at: new Date().toISOString()
+          }, { onConflict: 'device_id' });
 
-        const { error } = await supabase.from('cyberpath_state').upsert(payload, { onConflict: 'device_id' });
         if (error) {
-          console.warn('Supabase sauvegarde impossible :', error.message);
+          console.warn('Supabase write error:', error.message);
         }
       } catch (error) {
-        console.warn('Supabase sauvegarde impossible :', error);
+        console.warn('Supabase write failed:', error);
       }
     }
 
     async function restoreState() {
-      const localState = readLocalState();
-      state.checks = localState.checks || {};
-      state.notes = localState.notes || {};
-
-      if (supabase) {
-        await loadRemoteState();
-      }
+      await loadRemoteState();
     }
 
     function buildRoadmap() {
@@ -222,7 +208,7 @@
         input.addEventListener('change', async () => {
           state.checks[input.dataset.key] = input.checked;
           saveLocalState();
-          if (supabase) await saveRemoteState();
+          await saveRemoteState();
           update();
           toast();
         });
@@ -240,10 +226,10 @@
       `).join('');
 
       document.querySelectorAll('[data-day]').forEach((input) => {
-        input.addEventListener('input', () => {
+        input.addEventListener('input', async () => {
           state.notes[input.dataset.day] = input.value;
           saveLocalState();
-          if (supabase) saveRemoteState();
+          await saveRemoteState();
         });
       });
     }
@@ -291,7 +277,7 @@
         try {
           await supabase.from('cyberpath_state').delete().eq('device_id', deviceId);
         } catch (error) {
-          console.warn('Impossible de réinitialiser Supabase :', error);
+          console.warn('Supabase reset failed:', error);
         }
       }
 
