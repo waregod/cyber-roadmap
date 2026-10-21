@@ -79,7 +79,7 @@
 
     const localKey = 'cyberpath-v1';
     const config = window.SUPABASE_CONFIG || {};
-    const supabase = config.url && config.anonKey && window.supabase ? window.supabase.createClient(config.url, config.anonKey) : null;
+    const supabaseClient = config.url && config.anonKey && window.supabase ? window.supabase.createClient(config.url, config.anonKey) : null;
     const deviceId = (() => {
       const existing = localStorage.getItem('cyberpath-device-id');
       if (existing) return existing;
@@ -102,9 +102,9 @@
     }
 
     async function loadRemoteState() {
-      if (!supabase) return;
+      if (!supabaseClient) return;
       try {
-        const { data, error } = await supabase
+        const { data, error } = await supabaseClient
           .from('cyberpath_state')
           .select('*')
           .eq('device_id', deviceId)
@@ -126,9 +126,9 @@
     }
 
     async function saveRemoteState() {
-      if (!supabase) return;
+      if (!supabaseClient) return;
       try {
-        const { error } = await supabase
+        const { error } = await supabaseClient
           .from('cyberpath_state')
           .upsert({
             device_id: deviceId,
@@ -273,9 +273,9 @@
       localStorage.removeItem(localKey);
       localStorage.removeItem('cyberpath-device-id');
 
-      if (supabase) {
+      if (supabaseClient) {
         try {
-          await supabase.from('cyberpath_state').delete().eq('device_id', deviceId);
+          await supabaseClient.from('cyberpath_state').delete().eq('device_id', deviceId);
         } catch (error) {
           console.warn('Supabase reset failed:', error);
         }
